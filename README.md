@@ -12,27 +12,7 @@ Set of function to parse an output log file from the software Gaussian.
 
 Use the python notebook parse_gaussian
 
-### Prerequisites
 
-```
-pancakes
-```
-
-### Installing
-
-```
-pancakes
-```
-
-## Running the tests
-
-pancakes
-
-### Break down into end to end tests
-
-```
-pancakes
-```
 
 ## Authors
 
