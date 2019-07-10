@@ -113,7 +113,7 @@ def Gau_Forcebalance(filepath, ener_flag, job, name_file = ['qdata.txt', 'all.gr
                 with open(name_file[1], 'x') as f:
                     f.write("")
                     
-        if ener_flag == 'Counterpoise' or ener_flag == 'BSSE':
+        if ener_flag == 'Counterpoise' :
             convert_energy = 627.509 # from kcal/mol to Hartree
         else :
             convert_energy = 1
@@ -144,7 +144,7 @@ def Gau_Forcebalance(filepath, ener_flag, job, name_file = ['qdata.txt', 'all.gr
             allgro.write("   {}\n".format(int(len(cq)/3)))
             for _gro in gro:
                 allgro.write("    1SOL {:>4}{:>4}    {:.4f}    {:.4f}     {:.4f}\n".format(
-                                                 int(_gro[0]),
+                                                 _gro[0],
                                                  conta_atom,
                                                  _gro[1]*0.1,
                                                  _gro[2]*0.1,
