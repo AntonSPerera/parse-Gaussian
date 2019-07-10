@@ -141,10 +141,10 @@ def Gau_Forcebalance(filepath, ener_flag, job, name_file = ['qdata.txt', 'all.gr
         conta_atom = 1
         with open(name_file[1], 'a') as allgro:
             allgro.write("Coordinate from {}\n".format(filepath[filepath.rfind('/') + 1:]))
-            allgro.write("   {}\n".format(len(cq)/3))
+            allgro.write("   {}\n".format(int(len(cq)/3)))
             for _gro in gro:
-                allgro.write("   1SOL {:>4}{:>4}    {:.4f}    {:.4f}     {:.4f}\n".format(
-                                                 _gro[0],
+                allgro.write("    1SOL {:>4}{:>4}    {:.4f}    {:.4f}     {:.4f}\n".format(
+                                                 int(_gro[0]),
                                                  conta_atom,
                                                  _gro[1]*0.1,
                                                  _gro[2]*0.1,
