@@ -1,10 +1,16 @@
-# Project Title
+# Parser Output Gaussian
 
-pancakes
+Set of function to parse an output log file from the software Gaussian.
+
+	It is possible to:
+		1- Get a txt version of the energy/forces/coordinate/moment
+		2- Get a DataFrame (pandas) gaussian object
+		3- To transform the input data in the forcebalance format
+
 
 ## Getting Started
 
-pancakes
+Use the python notebook parse_gaussian
 
 ### Prerequisites
 
