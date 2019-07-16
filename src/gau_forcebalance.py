@@ -131,7 +131,7 @@ def Gau_Forcebalance(filepath, ener_flag, job, name_file = ['qdata.txt', 'all.gr
             for _c in cq:
                  qd.write("{:.4f} ".format(_c*0.1))
         
-            qd.write("\nENERGY {} \n".format(str(energy*convert_energy)))
+            qd.write("\nENERGY {} \n".format(str(energy/convert_energy)))
             
             qd.write("FORCES ")
             for _f in force:
@@ -139,18 +139,31 @@ def Gau_Forcebalance(filepath, ener_flag, job, name_file = ['qdata.txt', 'all.gr
             qd.write("\n \n")
          
         conta_atom = 1
+        count_mol  = 1
         with open(name_file[1], 'a') as allgro:
             allgro.write("Coordinate from {}\n".format(filepath[filepath.rfind('/') + 1:]))
             allgro.write("   {}\n".format(int(len(cq)/3)))
            
-            for _gro in gro:
-                allgro.write("    1SOL {:>4}{:>4}    {:.4f}    {:.4f}     {:.4f}\n".format(
+            for i, _gro in enumerate(gro):
+                if i == 0:
+                    allgro.write("{:5s}BrM {:>4}{:>4}    {:.4f}    {:.4f}     {:.4f}\n".format(
+                                                 1,    
                                                  _gro[0].replace('O','OW').replace('H','HW'),
                                                  conta_atom,
                                                  _gro[1]*0.1,
                                                  _gro[2]*0.1,
                                                  _gro[3]*0.1))
+                else:
+                    allgro.write("{:5}SOL {:>4}{:>4}    {:.4f}    {:.4f}     {:.4f}\n".format(
+                                                 count_mol,
+                                                 _gro[0].replace('O','OW').replace('H','HW'),
+                                                 conta_atom,
+                                                 _gro[1]*0.1,
+                                                 _gro[2]*0.1,
+                                                 _gro[3]*0.1))    
                 conta_atom +=1
+                if i % 3 == 0:
+                    count_mol +=1
             allgro.write("  0.000000   0.000000   0.000000\n")
         
         os.chdir(filepath[:filepath.rfind('/')])
